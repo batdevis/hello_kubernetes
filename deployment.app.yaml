@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echotab
+spec:
+  selector:
+    matchLabels:
+      app: echotab
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: echotab
+    spec:
+      containers:
+      - name: echotab
+        image: hashicorp/http-echo
+        args:
+        - "-text=hello mister Tab"
+        ports:
+        - containerPort: 5678
