@@ -30,7 +30,8 @@ We'll never use the dashboard in this tutorial.
 Back to terminal, press ctrl+C and type...
 
 ### Kubectl
-[Here](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux)'s the instructions to install kubectl cli.
+Here's the instructions to install kubectl cli:
+https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux.
 ```
 $ kubectl get pods -A
 ```
