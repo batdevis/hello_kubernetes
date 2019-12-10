@@ -23,7 +23,7 @@ Open the kubernetes web dashboard and celebrate this first step.
 ```
 $ minikube dashboard
 ```
-![kubernetes dashboard](https://firebasestorage.googleapis.com/v0/b/blog-c8c34.appspot.com/o/k8s/k8s_minikube_dashboard.png?alt=media)
+![kubernetes dashboard](https://github.com/batdevis/hello_kubernetes/raw/master/images/k8s_minikube_dashboard.png)
 
 Cool, isn't it?
 We'll never use the dashboard in this tutorial.
