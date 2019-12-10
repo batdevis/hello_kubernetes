@@ -6,7 +6,7 @@ I'll try to focus only on the essentials steps in order to practice in a kuberne
 I want to keep things essentials and simple, without going deeper and omitting non-essential informations.
 
 ## Prepare your machine with Minikube
-![minikube logo[(https://firebasestorage.googleapis.com/v0/b/blog-c8c34.appspot.com/o/k8s%2Fminikube_logo_200.png?alt=media)
+![minikube logo](https://firebasestorage.googleapis.com/v0/b/blog-c8c34.appspot.com/o/k8s%2Fminikube_logo_200.png?alt=media)
 
 We are going to use **Minikube**, the local Kubernetes cluster system: [https://minikube.sigs.k8s.io/docs/overview/](https://minikube.sigs.k8s.io/docs/overview/).
 
