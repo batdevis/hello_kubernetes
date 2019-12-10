@@ -1,15 +1,15 @@
 
 # Hello, kubernetes
-I'll try to focus only on the essentials steps in order to practice in a kubernetes sandbox local cluster. 
+I'll try to focus only on the essentials steps in order to practice in a kubernetes sandbox local cluster.
+
 I want to keep things essentials and simple, without going deeper and omitting non-essential informations.
 
 ## Prepare your machine with Minikube
-We use **Minikube**, the local Kubernetes cluster system:
-[https://minikube.sigs.k8s.io/docs/overview/](https://minikube.sigs.k8s.io/docs/overview/).
+We are going to use **Minikube**, the local Kubernetes cluster system: [https://minikube.sigs.k8s.io/docs/overview/](https://minikube.sigs.k8s.io/docs/overview/).
 
 Minikube creates a kubernetes cluster inside a **virtual machine**.
 
-Follow the instructions:
+Follow the instructions to install it on [Virtual Box](https://www.virtualbox.org/](Virtual Box):
 [https://minikube.sigs.k8s.io/docs/start/linux/](https://minikube.sigs.k8s.io/docs/start/linux/).
 
 *I work in linux. Don't ask me about other operating systems*.
@@ -122,7 +122,7 @@ spec:
     targetPort: 3000
   selector:
     app: app
-``` 
+```
 ### Configmaps, secrets
 In **configmaps** and **secrets** you put configuration key-value pairs and configuration files.
 Usually you map this values with env variables of the container.
@@ -149,6 +149,141 @@ Ask to the ingress if you want to know the public ip of your cluster:
 ```
 $ kubectl get ingress
 ```
-## Deploy
+## Shut up and play
+Clone the example repo:
+```
+$ git clone git@github.com:batdevis/hello_kubernetes.git
+```
 
+We have some kubernetes configuration files:
+```
+$ ls *.yaml -1
 
+deployment.app.yaml
+ingress.app.yaml
+service.app.yaml
+```
+Let's create our kubernetes components into minikube cluster:
+```
+$ kubectl apply -f deployment.app.yaml
+deployment.apps/echotab created
+
+$ kubectl apply -f service.app.yaml
+service/echotab created
+
+$ kubectl apply -f ingress.app.yaml
+ingress.extensions/echo-ingress created
+```
+and check them:
+```
+$ kubectl get all
+```
+The deployment definition contains an example application that echo something:
+https://github.com/hashicorp/http-echo.
+
+Let's check the status of the deployment and its pods.
+```
+$ kubectl get deployments
+NAME      READY   UP-TO-DATE   AVAILABLE   AGE
+echotab   1/1     1            1           102m
+
+$ kubectl describe deployments/echotab
+Name:                   echotab
+...
+Selector:               app=echotab
+Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+...
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app=echotab
+  Containers:
+   echotab:
+    Image:      hashicorp/http-echo
+...
+Events:
+  Type    Reason     Age        From               Message
+  ----    ------     ----       ----               -------
+  Normal  Scheduled  <unknown>  default-scheduler  Successfully assigned default/echotab-5dd7fbb757-qglgc to minikube
+...
+```
+
+```
+$ kubectl get pods
+NAME                       READY   STATUS    RESTARTS   AGE
+echotab-5dd7fbb757-qglgc   1/1     Running   0          105m
+
+$ kubectl describe pods/echotab-5dd7fbb757-qglgc
+Name:         echotab-5dd7fbb757-qglgc
+...
+```
+
+```
+$ kubectl logs pods/echotab-5dd7fbb757-qglgc
+2019/12/10 11:58:23 Server is listening on :5678
+...
+```
+_the name of your pod will be different_
+
+The commands above are the most used kubectl command, remebder them:
+
+```
+$ kubectl get pods/$POD_NAME
+$ kubectl logs pods/$POD_NAME
+$ kubectl describe pods/$POD_NAME
+```
+
+In case of pods in error status, these commands could save your day.
+
+Delete the pod:
+```
+$ kubectl describe pods/echotab-5dd7fbb757-qglgc
+```
+And check the status in an other terminal:
+```
+$ kubectl get pods
+NAME                       READY   STATUS        RESTARTS   AGE
+echotab-5dd7fbb757-lzsnr   1/1     Running       0          10s
+echotab-5dd7fbb757-qglgc   1/1     Terminating   0          112m
+```
+Look here, you can't kill the pod!
+
+When a pod goeas down, the deployment turn up a new pod.
+
+This is one of main concepts of kubernetes.
+
+The deployment is responsible to keep the number of desired replicas of the pods up.
+
+Try to increment the number of replicas in deployment.app.yaml:
+```
+change
+...
+spec:
+  selector:
+    matchLabels:
+      app: echotab
+  replicas: 1
+...
+```
+in
+```
+...
+spec:
+  selector:
+    matchLabels:
+      app: echotab
+  replicas: 2
+...
+```
+
+Apply the modifications:
+```
+$ kubectl apply -f deployment.app.yaml
+deployment.apps/echotab configured
+```
+Say hi to the new pod:
+```
+$ kubectl get pods
+NAME                       READY   STATUS    RESTARTS   AGE
+echotab-5dd7fbb757-87znq   1/1     Running   0          24s
+echotab-5dd7fbb757-lzsnr   1/1     Running   0          12m
+```
