@@ -313,3 +313,19 @@ NAME                       READY   STATUS    RESTARTS   AGE
 echotab-5dd7fbb757-87znq   1/1     Running   0          24s
 echotab-5dd7fbb757-lzsnr   1/1     Running   0          12m
 ```
+
+Ok, it's enough for today.
+
+Clean the scene of crime:
+```
+$ minikube stop
+Stopping "minikube" in virtualbox ...
+"minikube" stopped.
+
+$ minikube delete
+Deleting "minikube" in virtualbox ...
+The "minikube" cluster has been deleted.
+Successfully deleted profile "minikube"
+```
+
+Bye!
