@@ -167,16 +167,31 @@ In the next step we'll play with some kubectl commands, stay tuned.
 
 ----
 # Let's play with kubernetes
+In the previous article we have configured minukube, the local kubernetes cluster.
+
+Start it:
+```
+$ minikube start
+minikube v1.5.2 on Linuxmint 19.2
+Automatically selected the 'virtualbox' driver (alternates: [none])
+Creating virtualbox VM (CPUs=2, Memory=2000MB, Disk=20000MB) ...
+Preparing Kubernetes v1.16.2 on Docker '18.09.9' ...
+Pulling images ...
+Launching Kubernetes ...
+Waiting for: apiserver
+Done! kubectl is now configured to use "minikube"
+```
 Clone the example repo:
 ```
 $ git clone git@github.com:batdevis/hello_kubernetes.git
 ```
 
-We have a couple of kubernetes configuration files:
+We have some kubernetes configuration files:
 ```
 $ ls *.yaml -1
 
 deployment.app.yaml
+deployment.nginx.patch.yaml
 service.app.yaml
 ```
 Let's create our kubernetes components into minikube cluster.
@@ -198,12 +213,14 @@ And the ingress, that expose the service to the real cruel world.
 
 The ingress component is the only kubernetes component that is always different according to your cloud provider.
 
-The following commands works only for minikube.
+The following commands works for minikube.
 ```
-minikube addons enable ingress
-kubectl patch configmap tcp-services -n kube-system --patch '{"data":{"80":"default/echotab:80"}}'
-kubectl patch deployment nginx-ingress-controller --patch "$(cat deployment.nginx.patch.yaml)" -n kube-system
+$ minikube addons enable ingress
+$ kubectl apply -f ingress.echotab.yaml
+ingress.networking.k8s.io/echotab-ingress configured
 ```
+
+Copy and paste them and don't worry about how they works, for now.
 
 When you'll setup a kubernetes cluster in a cloud provider, [check](https://cloud.google.com/kubernetes-engine/docs/concepts/ingress) [out](https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html) [their](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nginx-ingress-on-digitalocean-kubernetes-using-helm) [guides](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/#additional-controllers).
 
