@@ -15,7 +15,7 @@ Minikube creates a kubernetes cluster inside a **virtual machine**.
 Follow the instructions to install it on [Virtual Box](https://www.virtualbox.org/):
 [https://minikube.sigs.k8s.io/docs/start/linux/](https://minikube.sigs.k8s.io/docs/start/linux/).
 
-*I work in linux. Don't ask me about other operating systems*.
+*I work on linux. Don't ask me about other operating systems*.
 
 Start minikube:
 ```
@@ -47,7 +47,9 @@ kube-system            coredns-5644d7b6d9-9xr9c                     1/1     Runn
 Ok, this is better.
 Your local k8s system is up.
 If you want to learn to work with kubernetes, you have to learn to use the command line.
+
 The web console is only an extra.
+
 If you think you can manage devops issues only with a web page and a mouse pointer, do the world a favor and change jobs.
 
 ## Kubernetes components
