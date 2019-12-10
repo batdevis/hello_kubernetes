@@ -189,7 +189,7 @@ kubectl patch configmap tcp-services -n kube-system --patch '{"data":{"80":"defa
 kubectl patch deployment nginx-ingress-controller --patch "$(cat deployment.nginx.patch.yaml)" -n kube-system
 ```
 
-When you'll setup a kubernetes cluster in a cloud provider, (check)[https://cloud.google.com/kubernetes-engine/docs/concepts/ingress] (out)[https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html] (their)[https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nginx-ingress-on-digitalocean-kubernetes-using-helm] (guides)[https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/#additional-controllers].
+When you'll setup a kubernetes cluster in a cloud provider, [check](https://cloud.google.com/kubernetes-engine/docs/concepts/ingress) [out](https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html) [their](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nginx-ingress-on-digitalocean-kubernetes-using-helm) [guides](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/#additional-controllers).
 
 Have a look to your components:
 ```
