@@ -166,7 +166,7 @@ service.app.yaml
 Let's create our kubernetes components into minikube cluster.
 
 The deployment definition contains an example application that echo something:
-https://github.com/hashicorp/http-echo.
+https://hub.docker.com/r/hashicorp/http-echo.
 
 ```
 $ kubectl apply -f deployment.app.yaml
