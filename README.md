@@ -85,8 +85,11 @@ The worker nodes will contain our applications, it's our battle field.
 ### Pods
 Nodes contains the pods.
 The [pod](https://kubernetes.io/docs/reference/glossary/?fundamental=true#term-pod) is the main component of kubernetes.
+
 You will be always focus on the pods every time you do something with kubectl.
-"Pods are used as the unit of replication in Kubernetes." ( [Daniel Sanche](https://link.medium.com/QOXL6B9iC0).
+
+"Pods are used as the unit of replication in Kubernetes." (_[Daniel Sanche](https://link.medium.com/QOXL6B9iC0)_).
+
 A pod contains a **docker [container](https://kubernetes.io/docs/reference/glossary/?fundamental=true#term-container)**.
 
 *I said "usually" because sometimes it could contains more than ine container, and the container could be other than docker, [like rkt](https://containerjournal.com/topics/container-ecosystems/5-container-alternatives-to-docker/).
@@ -155,7 +158,12 @@ Ask to the ingress if you want to know the public ip of your cluster:
 ```
 $ kubectl get ingress
 ```
+
 ## Shut up and play
+In the next step we'll play with some kubectl commands, stay tuned.
+
+----
+# Let's play with kubernetes
 Clone the example repo:
 ```
 $ git clone git@github.com:batdevis/hello_kubernetes.git
