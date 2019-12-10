@@ -1,4 +1,4 @@
-![kubernetes logo](https://firebasestorage.googleapis.com/v0/b/blog-c8c34.appspot.com/o/k8s%2Fk8s_logo_200.png?alt=media)
+![kubernetes logo](https://github.com/batdevis/hello_kubernetes/raw/master/images/k8s_logo_200.png)
 
 # Hello, kubernetes
 I'll try to focus only on the essentials steps in order to practice in a kubernetes sandbox local cluster.
@@ -6,7 +6,7 @@ I'll try to focus only on the essentials steps in order to practice in a kuberne
 I want to keep things essentials and simple, without going deeper and omitting non-essential informations.
 
 ## Prepare your machine with Minikube
-![minikube logo](https://firebasestorage.googleapis.com/v0/b/blog-c8c34.appspot.com/o/k8s%2Fminikube_logo_200.png?alt=media)
+![minikube logo](https://github.com/batdevis/hello_kubernetes/raw/master/images/minikube_logo_200.png)
 
 We are going to use **Minikube**, the local Kubernetes cluster system: [https://minikube.sigs.k8s.io/docs/overview/](https://minikube.sigs.k8s.io/docs/overview/).
 
@@ -66,6 +66,9 @@ Kubernetes has many components.
         + Storage
         + ConfigMaps
         + Secrets
+
+![kubernetes architecture](https://github.com/batdevis/hello_kubernetes/raw/master/images/Kubernetes-architecture.png)
+_(image from https://blog.sensu.io/how-kubernetes-works)_
 
 In kubernetes every component is rapresented by a **yaml** configuration.
 
