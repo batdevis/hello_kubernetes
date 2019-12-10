@@ -156,29 +156,51 @@ Clone the example repo:
 $ git clone git@github.com:batdevis/hello_kubernetes.git
 ```
 
-We have some kubernetes configuration files:
+We have a couple of kubernetes configuration files:
 ```
 $ ls *.yaml -1
 
 deployment.app.yaml
-ingress.app.yaml
 service.app.yaml
 ```
-Let's create our kubernetes components into minikube cluster:
+Let's create our kubernetes components into minikube cluster.
+
+The deployment, that contains the pod that runs the docker image:
 ```
 $ kubectl apply -f deployment.app.yaml
 deployment.apps/echotab created
-
+```
+The service, that maps the port from 80(external) to 5678(pod):
+```
 $ kubectl apply -f service.app.yaml
 service/echotab created
-
-$ kubectl apply -f ingress.app.yaml
-ingress.extensions/echo-ingress created
 ```
-and check them:
+
+And the ingress, that expose the service to the real cruel world.
+
+The ingress component is the only kubernetes component that is always different according to your cloud provider.
+
+The following commands works only for minikube.
+```
+minikube addons enable ingress
+kubectl patch configmap tcp-services -n kube-system --patch '{"data":{"80":"default/echotab:80"}}'
+kubectl patch deployment nginx-ingress-controller --patch "$(cat deployment.nginx.patch.yaml)" -n kube-system
+```
+
+When you'll setup a kubernetes cluster in a cloud provider, (check)[https://cloud.google.com/kubernetes-engine/docs/concepts/ingress] (out)[https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html] (their)[https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nginx-ingress-on-digitalocean-kubernetes-using-helm] (guides)[https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/#additional-controllers].
+
+Have a look to your components:
 ```
 $ kubectl get all
 ```
+
+And test your application:
+```
+$ curl -X GET $(minikube ip)
+hello mister Tab
+```
+Oh oh oh we are live!
+
 The deployment definition contains an example application that echo something:
 https://github.com/hashicorp/http-echo.
 
@@ -187,7 +209,9 @@ Let's check the status of the deployment and its pods.
 $ kubectl get deployments
 NAME      READY   UP-TO-DATE   AVAILABLE   AGE
 echotab   1/1     1            1           102m
+```
 
+```
 $ kubectl describe deployments/echotab
 Name:                   echotab
 ...
@@ -212,7 +236,9 @@ Events:
 $ kubectl get pods
 NAME                       READY   STATUS    RESTARTS   AGE
 echotab-5dd7fbb757-qglgc   1/1     Running   0          105m
+```
 
+```
 $ kubectl describe pods/echotab-5dd7fbb757-qglgc
 Name:         echotab-5dd7fbb757-qglgc
 ...
@@ -223,9 +249,9 @@ $ kubectl logs pods/echotab-5dd7fbb757-qglgc
 2019/12/10 11:58:23 Server is listening on :5678
 ...
 ```
-_the name of your pod will be different_
+_The name of your pod will be different._
 
-The commands above are the most used kubectl command, remebder them:
+The commands above are the most used kubectl command, memorize them:
 
 ```
 $ kubectl get pods/$POD_NAME
@@ -255,8 +281,8 @@ This is one of main concepts of kubernetes.
 The deployment is responsible to keep the number of desired replicas of the pods up.
 
 Try to increment the number of replicas in deployment.app.yaml:
-```
 change
+```
 ...
 spec:
   selector:
