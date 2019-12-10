@@ -165,7 +165,9 @@ service.app.yaml
 ```
 Let's create our kubernetes components into minikube cluster.
 
-The deployment, that contains the pod that runs the docker image:
+The deployment definition contains an example application that echo something:
+https://github.com/hashicorp/http-echo.
+
 ```
 $ kubectl apply -f deployment.app.yaml
 deployment.apps/echotab created
@@ -200,9 +202,6 @@ $ curl -X GET $(minikube ip)
 hello mister Tab
 ```
 Oh oh oh we are live!
-
-The deployment definition contains an example application that echo something:
-https://github.com/hashicorp/http-echo.
 
 Let's check the status of the deployment and its pods.
 ```
