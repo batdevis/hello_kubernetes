@@ -1,3 +1,4 @@
+![kubernetes logo](https://firebasestorage.googleapis.com/v0/b/blog-c8c34.appspot.com/o/k8s%2Fk8s_logo.png?alt=media)
 
 # Hello, kubernetes
 I'll try to focus only on the essentials steps in order to practice in a kubernetes sandbox local cluster.
