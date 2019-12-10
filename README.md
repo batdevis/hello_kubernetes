@@ -9,7 +9,7 @@ We are going to use **Minikube**, the local Kubernetes cluster system: [https://
 
 Minikube creates a kubernetes cluster inside a **virtual machine**.
 
-Follow the instructions to install it on [Virtual Box](https://www.virtualbox.org/](Virtual Box):
+Follow the instructions to install it on [Virtual Box](https://www.virtualbox.org/):
 [https://minikube.sigs.k8s.io/docs/start/linux/](https://minikube.sigs.k8s.io/docs/start/linux/).
 
 *I work in linux. Don't ask me about other operating systems*.
