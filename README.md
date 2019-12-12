@@ -95,7 +95,7 @@ You will be always focus on the pods every time you do something with kubectl.
 
 A pod contains a **docker [container](https://kubernetes.io/docs/reference/glossary/?fundamental=true#term-container)**.
 
-*I said "usually" because sometimes it could contains more than ine container, and the container could be other than docker, [like rkt](https://containerjournal.com/topics/container-ecosystems/5-container-alternatives-to-docker/).
+*I said "usually" because sometimes it could contains more than one container, and the container could be other than docker, [like rkt](https://containerjournal.com/topics/container-ecosystems/5-container-alternatives-to-docker/).
 But we stay on the main road.*
 
 If you manually kill a pod, his deployment will start immediately a new instance.
