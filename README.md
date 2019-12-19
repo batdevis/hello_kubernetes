@@ -171,7 +171,7 @@ $ kubectl get ingress
 ```
 
 ## Shut up and play
-In the next step we'll play with some kubectl commands, stay tuned.
+After this overview of the main kubernetes components, in the next step we'll play with some kubectl commands, stay tuned.
 
 ----
 # Let's play with kubernetes
