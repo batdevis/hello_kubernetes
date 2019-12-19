@@ -6,11 +6,11 @@ As developers, we always try to isolate problems, functions, bugs, tasks.
 
 We try to blackbox everyhing and let communicate every component through a minimal set of messages.
 
-With Kubernetes we apply the same concepts in the world of the servers.
+With Kubernetes we apply the same concepts to the world of the application deployment.
 
 They call it _Infrastructure as Code_.
 
-Kubernetes is the orchestrator tool designed to automate the deployment, scaling, and management of containerized applications.
+Kubernetes is the orchestrator tool for managing containerized applications.
 
 I'll try to focus only on the essentials steps in order to practice in a kubernetes sandbox local cluster.
 
@@ -78,15 +78,12 @@ Kubernetes has many components.
         + ConfigMaps
         + Secrets
 
-![kubernetes architecture](https://github.com/batdevis/hello_kubernetes/raw/master/images/Kubernetes-architecture.png)
-_(image from https://blog.sensu.io/how-kubernetes-works)_
-
 In kubernetes every component is rapresented by a **yaml** configuration.
 
 ### Cluster
-It's the main box that contains all components:
+It's the main box. Usually I identify the cluster with the entire installation. It's your group of machines:
 [https://kubernetes.io/docs/reference/glossary/?fundamental=true#term-cluster](https://kubernetes.io/docs/reference/glossary/?fundamental=true#term-cluster).
-The cluster contains the nodes.
+The machines are the nodes.
 
 ### Nodes
 A [node](https://kubernetes.io/docs/reference/glossary/?fundamental=true#term-node) typically is a virtual machine.
