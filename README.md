@@ -1,9 +1,20 @@
 ![kubernetes logo](https://github.com/batdevis/hello_kubernetes/raw/master/images/k8s_logo_200.png)
 
 # Hello, kubernetes
+## We live in a containerized world.
+As developers, we always try to isolate problems, functions, bugs, tasks.
+
+We try to blackbox everyhing and let communicate every component through a minimal set of messages.
+
+With Kubernetes we apply the same concepts in the world of the servers.
+
+They call it _Infrastructure as Code_.
+
+Kubernetes is the orchestrator tool designed to automate the deployment, scaling, and management of containerized applications.
+
 I'll try to focus only on the essentials steps in order to practice in a kubernetes sandbox local cluster.
 
-I want to keep things essentials and simple, without going deeper and omitting non-essential informations.
+I want to keep things essentials and simple, without going deeper.
 
 ## Prepare your machine with Minikube
 ![minikube logo](https://github.com/batdevis/hello_kubernetes/raw/master/images/minikube_logo_200.png)
