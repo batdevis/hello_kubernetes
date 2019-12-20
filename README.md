@@ -342,7 +342,7 @@ spec:
 ...
 ```
 
-Apply the modifications:
+Apply it:
 ```
 $ kubectl apply -f deployment.app.yaml
 deployment.apps/echotab configured
