@@ -314,7 +314,7 @@ echotab-5dd7fbb757-qglgc   1/1     Terminating   0          112m
 ```
 Look here, you can't kill the pod!
 
-When a pod goeas down, the deployment turn up a new pod.
+When a pod goes down, the deployment turn up a new pod.
 
 This is one of main concepts of kubernetes.
 
