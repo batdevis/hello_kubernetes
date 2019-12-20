@@ -4,7 +4,7 @@
 ## We live in a containerized world.
 As developers, we always try to isolate problems, functions, bugs, tasks.
 
-We try to blackbox everyhing and let communicate every component through a minimal set of messages.
+We try to blackbox everything and let communicate every component through a minimal set of messages.
 
 With Kubernetes we apply the same concepts to the world of the application deployment.
 
