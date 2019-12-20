@@ -303,7 +303,7 @@ In case of pods in error status, these commands could save your day.
 
 Delete the pod:
 ```
-$ kubectl describe pods/echotab-5dd7fbb757-qglgc
+$ kubectl delete pods/echotab-5dd7fbb757-qglgc
 ```
 And check the status in an other terminal:
 ```
